@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="/images/site/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href= css/style.css>
 </head>
 <body>
     <!-- Header -->
@@ -24,8 +24,6 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/sobre-nos.html">Sobre Nós</a></li>
                 <li><a href="/servicos.html">Serviços</a></li>
-                <li><a href="/fotos.html">Fotos</a></li>
-                <li><a href="/busca-e-entrega.html">Busca e Entrega</a></li>
                 <li><a href="/contato.html">Contato</a></li>
             </ul>
             <div class="mobile-menu-btn">
@@ -108,44 +106,134 @@
             <div class="section-title">
                 <h2>Entre em Contato</h2>
             </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Unidade Rebouças</h3>
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+            <div class="contact-row">
+                <div class="contact-info-column">
+                    <div class="location-tabs">
+                        <div class="location-tab active" data-location="reboucas">
+                            <h4>Unidade Rebouças</h4>
                         </div>
-                        <div>
-                            <p>(41) 3332-8000 - Opção 01</p>
+                        <div class="location-tab" data-location="santa-felicidade">
+                            <h4>Unidade Santa Felicidade</h4>
+                        </div>
+                        <div class="location-tab" data-location="sao-jose">
+                            <h4>Unidade São José dos Pinhais</h4>
                         </div>
                     </div>
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                    
+                    <div class="location-content active" id="reboucas">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Endereço</h4>
+                                <p>Rua Rebouças, 1234 - Rebouças<br>Curitiba - PR, 80230-040</p>
+                            </div>
                         </div>
-                        <div>
-                            <p>Rua Rebouças, 1234 - Rebouças<br>Curitiba - PR</p>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telefone</h4>
+                                <p>(41) 3332-8000 - Opção 01<br>(41) 99999-9999</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="location-content" id="santa-felicidade">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Endereço</h4>
+                                <p>Av. Manoel Ribas, 5678 - Santa Felicidade<br>Curitiba - PR, 82400-000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telefone</h4>
+                                <p>(41) 3332-8000 - Opção 02<br>(41) 98888-8888</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="location-content" id="sao-jose">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Endereço</h4>
+                                <p>Rua das Américas, 2345 - Centro<br>São José dos Pinhais - PR, 83005-000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telefone</h4>
+                                <p>(41) 3332-8000 - Opção 03<br>(41) 97777-7777</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Common contact info for all locations -->
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>E-mail</h4>
+                            <p>contato@casadomicroondas.com.br<br>atendimento@casadomicroondas.com.br</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Horário de Funcionamento</h4>
+                            <p>Segunda a Sexta: 08:30h às 17:30h<br>Avaliação na hora: até às 16h</p>
                         </div>
                     </div>
                 </div>
-                <div class="contact-info">
-                    <h3>Unidade Santa Felicidade</h3>
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                
+                <div class="contact-form-column">
+                    <form id="contactForm" action="contato.php" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nome" placeholder="Seu Nome" required>
                         </div>
-                        <div>
-                            <p>(41) 3332-8000 - Opção 02</p>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Seu E-mail" required>
                         </div>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                        <div class="form-group">
+                            <input type="tel" name="telefone" placeholder="Seu Telefone">
                         </div>
-                        <div>
-                            <p>Av. Manoel Ribas, 5678 - Santa Felicidade<br>Curitiba - PR</p>
+                        <div class="form-group">
+                            <select name="assunto" required>
+                                <option value="" disabled selected>Selecione o Serviço</option>
+                                <option value="orcamento">Orçamento</option>
+                                <option value="conserto">Conserto</option>
+                                <option value="busca">Busca e Entrega</option>
+                                <option value="outros">Outros</option>
+                            </select>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <textarea name="mensagem" placeholder="Sua Mensagem" rows="5" required></textarea>
+                        </div>
+                        <div class="form-message" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 4px;"></div>
+                        <button type="submit" class="btn btn-contact">Enviar Mensagem</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -188,7 +276,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Casa do Microondas em Curitiba - Todos os direitos reservados</p>
+                <p>&copy; 2025 Casa do Microondas em Curitiba - Todos os direitos reservados - Script Boys</p>
             </div>
         </div>
     </footer>
