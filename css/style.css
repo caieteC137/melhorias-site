@@ -613,6 +613,7 @@ footer {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s;
+    position: relative;
 }
 
 .gallery-item:hover {
@@ -624,6 +625,25 @@ footer {
     height: 250px;
     object-fit: cover;
     display: block;
+}
+
+.gallery-caption {
+    background-color: rgba(52, 73, 94, 0.9); /* var(--secondary) com 70% de opacidade */
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+@media (max-width: 576px) {
+    .gallery-caption {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
 }
 
 @media (max-width: 768px) {
