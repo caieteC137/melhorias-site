@@ -1,8 +1,9 @@
-// Mobile Menu Toggle
+// Improved mobile menu functionality
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 const navMenu = document.querySelector('.nav-menu');
 
-mobileMenuBtn.addEventListener('click', () => {
+mobileMenuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent event bubbling
     navMenu.classList.toggle('active');
     
     // Change icon based on menu state
@@ -10,9 +11,11 @@ mobileMenuBtn.addEventListener('click', () => {
     if (navMenu.classList.contains('active')) {
         icon.classList.remove('fa-bars');
         icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
     } else {
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
     }
 });
 
@@ -23,7 +26,21 @@ document.addEventListener('click', (e) => {
         const icon = mobileMenuBtn.querySelector('i');
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
     }
+});
+
+// Close menu when clicking on a menu item
+document.querySelectorAll('.nav-menu a').forEach(item => {
+    item.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+    });
 });
 
 // Smooth scroll for anchor links
@@ -236,4 +253,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Add touch support for mobile devices
+document.addEventListener('DOMContentLoaded', function() {
+    // For gallery items
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    if (galleryItems.length > 0) {
+        galleryItems.forEach(item => {
+            item.addEventListener('touchstart', function() {
+                this.classList.add('touch-active');
+            }, {passive: true});
+            
+            item.addEventListener('touchend', function() {
+                this.classList.remove('touch-active');
+            }, {passive: true});
+        });
+    }
+    
+    // For service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('touchstart', function() {
+            this.classList.add('touch-active');
+        }, {passive: true});
+        
+        card.addEventListener('touchend', function() {
+            this.classList.remove('touch-active');
+            // Trigger click after touch for better mobile experience
+            setTimeout(() => {
+                if (this.classList.contains('touch-active')) {
+                    this.click();
+                }
+            }, 100);
+        }, {passive: true});
+    });
+});
+
 
