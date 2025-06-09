@@ -163,3 +163,77 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Service Modals
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    // Add click event to each service card
+    serviceCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        });
+    });
+    
+    // Close modal when clicking on X
+    const closeButtons = document.querySelectorAll('.modal-close');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.modal-container');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
+    });
+    
+    // Close modal when clicking outside
+    const modals = document.querySelectorAll('.modal-container');
+    modals.forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+        });
+    });
+    
+    // Close modal when pressing ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const openModal = document.querySelector('.modal-container[style="display: block;"]');
+            if (openModal) {
+                openModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+        }
+    });
+    
+    // Handle modal links for smooth scrolling
+    document.querySelectorAll('.modal-btn[href^="#"]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Close the modal
+            const modal = this.closest('.modal-container');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Scroll to the target
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+
