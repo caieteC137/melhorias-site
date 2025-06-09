@@ -123,3 +123,43 @@ document.addEventListener('DOMContentLoaded', function() {
         activateTab(locationTabs[0]);
     }
 });
+
+// Gallery lightbox functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    
+    if (galleryItems.length > 0) {
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Create lightbox elements
+                const lightbox = document.createElement('div');
+                lightbox.className = 'lightbox';
+                
+                const lightboxContent = document.createElement('div');
+                lightboxContent.className = 'lightbox-content';
+                
+                const lightboxImg = document.createElement('img');
+                lightboxImg.src = this.src;
+                
+                const closeBtn = document.createElement('span');
+                closeBtn.className = 'lightbox-close';
+                closeBtn.innerHTML = '&times;';
+                
+                // Append elements
+                lightboxContent.appendChild(lightboxImg);
+                lightboxContent.appendChild(closeBtn);
+                lightbox.appendChild(lightboxContent);
+                document.body.appendChild(lightbox);
+                
+                // Prevent scrolling when lightbox is open
+                document.body.style.overflow = 'hidden';
+                
+                // Close lightbox on click
+                lightbox.addEventListener('click', function() {
+                    document.body.removeChild(lightbox);
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        });
+    }
+});
