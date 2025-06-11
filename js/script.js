@@ -83,6 +83,38 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
+    // Função para criar e mostrar notificações
+    function showNotification(message, type = 'success') {
+        // Remove notificação anterior se existir
+        const existingNotification = contactForm.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                <p>${message}</p>
+            </div>
+        `;
+        
+        // Encontra o botão de submit
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        // Insere a notificação antes do botão
+        submitButton.parentNode.insertBefore(notification, submitButton);
+        
+        // Adiciona a classe para animar a entrada
+        setTimeout(() => notification.classList.add('show'), 10);
+        
+        // Remove a notificação após 3 segundos
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+    
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -93,13 +125,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const mensagem = this.querySelector('[name="mensagem"]').value;
             
             if (!nome || !email || !mensagem) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
+                showNotification('Por favor, preencha todos os campos do formulário para continuar.', 'error');
+                return;
+            }
+            
+            // Validação básica de email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showNotification('Por favor, insira um endereço de e-mail válido.', 'error');
                 return;
             }
             
             // Here you would typically send the form data to a server
             // For now, we'll just show a success message
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+            showNotification('Obrigado pelo contato! Sua mensagem foi enviada com sucesso. Retornaremos em breve.');
             this.reset();
         });
     }
