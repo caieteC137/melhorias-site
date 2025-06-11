@@ -532,7 +532,7 @@ footer {
     justify-content: center;
     width: 60px;
     height: 60px;
-    background-color: white;
+    background-color: #32D951;
     border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
